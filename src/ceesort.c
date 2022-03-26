@@ -1,7 +1,20 @@
 #include "bsrch.h"
 
+#include <ctype.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+
+bool isint(char* s)
+{
+    for (int i = 0; s[i]; i++)
+    {
+        if (s[i] == '-' && isdigit(s[i + 1])) continue;
+        if (!isdigit(s[i])) return false;
+    }
+    return true;
+}
 
 
 int main(int argc, char** argv)
@@ -9,22 +22,30 @@ int main(int argc, char** argv)
     int* arr = malloc((argc - 1) * sizeof(int));
     for (int i = 1; i < argc; i++)
     {
+        if (!isint(argv[i]))
+        {
+            puts("Sorry but arguments must be integers");
+            return 1;
+        }
         arr[i - 1] = atoi(argv[i]);
     }
 
-    int target;
+    char target_str[16];
     printf("Enter number to search for: ");
-    scanf("%d", &target);
-    int result = bsrch(target, arr, argc - 1);
+    scanf("%s", target_str);
+    while (!isint(target_str))
+    {
+        printf("Sorry but you must enter a whole number, try again: ");
+        scanf("%s", target_str);
+    }
+    int target = atoi(target_str);
 
-    if (result != -1)
-    {
-        printf("Value found at index: %d\n", result);
-    }
+    int result = bsrch(target, arr, argc - 1);
+    if (result == -1)
+        puts("Value not found");
     else
-    {
-        printf("Value not found\n");
-    }
+        printf("Value found at index: %d\n", result);
     
+    free(arr);
     return 0;
 }

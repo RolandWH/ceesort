@@ -1,8 +1,7 @@
 #include "bsrch.h"
 
-#include <stddef.h>
 #include <stdbool.h>
-#include <math.h>
+#include <stddef.h>
 
 
 int bsrch(int target, int* arr, size_t n)
@@ -10,7 +9,7 @@ int bsrch(int target, int* arr, size_t n)
     bool found = false;
     int start = 0, end = n - 1;
     if (arr[start] > target || arr[end] < target) return -1;
-    int mid = round((start + end) / (double)2);
+    int mid = (start + end) / 2;
 
     while (!found)
     {
@@ -19,12 +18,12 @@ int bsrch(int target, int* arr, size_t n)
         else if (arr[mid] < target)
         {
             start = mid + 1;
-            mid = roundf((start + end) / (float)2);
+            mid = (start + end) / 2;
         }
         else if (arr[mid] > target)
         {
             end = mid - 1;
-            mid = roundf((start + end) / (float)2);
+            mid = (start + end) / 2;
         }
     }
 
