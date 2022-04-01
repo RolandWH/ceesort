@@ -6,6 +6,7 @@
 
 int bsrch(int target, int* arr, size_t n)
 {
+    // TODO: Find a way to error if list is out of order
     bool found = false;
     int start = 0, end = n - 1;
     if (arr[start] > target || arr[end] < target) return -1;
