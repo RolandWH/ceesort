@@ -40,7 +40,8 @@ int main(int argc, char** argv)
         "Please pick a mode of operation: "
     );
     scanf("%s", choice_str);
-    // Add checking that number is in range
+
+    // TODO: Add checking that number is in range
     while (!isint(choice_str))
     {
         printf("Sorry but you must enter a number between 1 and 2\n");
@@ -70,6 +71,7 @@ int main(int argc, char** argv)
     else if (choice == 2)
     {
         bubblesort(arr, n);
+
         printf("Here is your sorted list:\n");
         for (int i = 0; i < n; i++)
         {
