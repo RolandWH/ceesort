@@ -78,6 +78,7 @@ int main(int argc, char** argv)
             printf("%d", arr[i]);
             if (i < n - 1) printf(", ");
         }
+        putchar('\n');
     }
     
     free(arr);
