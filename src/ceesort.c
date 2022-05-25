@@ -21,6 +21,12 @@ bool isint(char* s)
 
 int main(int argc, char** argv)
 {
+    if (argc < 2)
+    {
+        puts("ERROR: Must have at least one argument (number)");
+        return -1;
+    }
+
     int* arr = malloc((argc - 1) * sizeof(int));
     for (int i = 1; i < argc; i++)
     {
