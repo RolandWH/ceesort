@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 
 inline void quit_err(const char* msg)
@@ -51,20 +52,28 @@ int main(int argc, char** argv)
     }
     int n = argc - 1;
 
+    /*
+    * The line:
+    * buffer[strcspn(buffer, "\n")] = 0;
+    * Strips trailing newline, so "2\n" becomes "2"
+    */
+
     char choice_str[16];
     printf(
         "1. Binary search\n"
         "2. Bubble sort\n"
         "Please pick a mode of operation: "
     );
-    scanf("%s", choice_str);
+    fgets(choice_str, 16, stdin);
+    choice_str[strcspn(choice_str, "\n")] = 0;
 
     // TODO: Add checking that number is in range
     while (!isint(choice_str))
     {
         printf("Sorry but you must enter a number between 1 and 2\n");
         printf("Try again: ");
-        scanf("%s", choice_str);
+        fgets(choice_str, 16, stdin);
+        choice_str[strcspn(choice_str, "\n")] = 0;
     }
     int choice = atoi(choice_str);
 
@@ -72,11 +81,12 @@ int main(int argc, char** argv)
     {
         char target_str[16];
         printf("Enter number to search for: ");
-        scanf("%s", target_str);
+        fgets(target_str, 16, stdin);
+        target_str[strcspn(target_str, "\n")] = 0;
         while (!isint(target_str))
         {
             printf("Sorry but you must enter a whole number, try again: ");
-            scanf("%s", target_str);
+            fgets(target_str, 16, stdin);
         }
         int target = atoi(target_str);
 
