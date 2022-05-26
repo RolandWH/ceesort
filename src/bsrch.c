@@ -23,6 +23,7 @@ int bsrch(int target, int* arr, size_t n)
     {
         if (arr[mid] == target) found = true;
         if (start == end && !found) return -1;
+        if (mid == end && !found) return -1;
         else if (arr[mid] < target)
         {
             start = mid + 1;
