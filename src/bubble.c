@@ -1,3 +1,10 @@
+/*
+ * Filename: bubble.c
+ * Author(s): Roland (r.weirhowell@gmail.com)
+ * Description: Perform bubble sort on an array of integers
+ * License: MIT (https://spdx.org/licenses/MIT.html)
+*/
+
 #include "bubble.h"
 
 #include <stdbool.h>

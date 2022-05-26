@@ -1,3 +1,10 @@
+/*
+ * Filename: bsrch.c
+ * Author(s): Roland (r.weirhowell@gmail.com)
+ * Description: Perform binary search on an integer array
+ * License: MIT (https://spdx.org/licenses/MIT.html)
+*/
+
 #include "bsrch.h"
 
 #include <stdbool.h>

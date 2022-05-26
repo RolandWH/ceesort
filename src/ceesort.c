@@ -1,10 +1,25 @@
+/*
+ * Filename: ceesort.c
+ * Author(s): Roland (r.weirhowell@gmail.com)
+ * Description: Main file to handle I/O and calling fucntions
+ * License: MIT (https://spdx.org/licenses/MIT.html)
+*/
+
 #include "bubble.h"
 #include "bsrch.h"
+#include "ccolour/colour.h"
 
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+
+inline void quit_err(const char* msg)
+{
+    ChangeColour(msg, RED_FOREGROUND, DEFAULT_COLOR, true);
+    exit(EXIT_FAILURE);
+}
 
 
 bool isint(char* s)
@@ -22,10 +37,7 @@ bool isint(char* s)
 int main(int argc, char** argv)
 {
     if (argc < 2)
-    {
-        puts("ERROR: Must have at least one argument (number)");
-        return -1;
-    }
+        quit_err("ERROR: Must have at least one argument (number)\n");
 
     int* arr = malloc((argc - 1) * sizeof(int));
     for (int i = 1; i < argc; i++)
