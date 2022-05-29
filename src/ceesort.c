@@ -7,6 +7,7 @@
 
 #include "bubble.h"
 #include "bsrch.h"
+#include "lsrch.h"
 #include "ccolour/colour.h"
 
 #include <ctype.h>
@@ -16,7 +17,7 @@
 #include <string.h>
 
 
-inline void quit_err(const char* msg)
+static inline void quit_err(const char* msg)
 {
     ChangeColour(msg, RED_FOREGROUND, DEFAULT_COLOR, true);
     exit(EXIT_FAILURE);
@@ -62,6 +63,7 @@ int main(int argc, char** argv)
     printf(
         "1. Binary search\n"
         "2. Bubble sort\n"
+	"3. Liniar search\n"
         "Please pick a mode of operation: "
     );
     fgets(choice_str, 16, stdin);
@@ -70,7 +72,7 @@ int main(int argc, char** argv)
     // TODO: Add checking that number is in range
     while (!isint(choice_str))
     {
-        printf("Sorry but you must enter a number between 1 and 2\n");
+        printf("Sorry but you must enter a number between 1 and 3\n");
         printf("Try again: ");
         fgets(choice_str, 16, stdin);
         choice_str[strcspn(choice_str, "\n")] = 0;
@@ -108,7 +110,17 @@ int main(int argc, char** argv)
         }
         putchar('\n');
     }
-    
+    else if (choice == 3)
+    {
+   	char target_str[16];
+        printf("Enter number to search for: ");
+        fgets(target_str, 16, stdin);                     target_str[strcspn(target_str, "\n")] = 0;
+        while (!isint(target_str))
+        {                                                     printf("Sorry but you must enter a whole number, try again: ");                                     fgets(target_str, 16, stdin);
+        }
+        int target = atoi(target_str);                                                                      int result = lsrch(arr, n, target);               if (result == -1)                                     puts("Value not found");                      else                                                  printf("Value found at index: %d\n", result);
+    }
+
     free(arr);
     return 0;
 }
