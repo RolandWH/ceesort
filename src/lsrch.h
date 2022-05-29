@@ -9,4 +9,3 @@
 
 
 int lsrch(int* arr, int n, int target);
-

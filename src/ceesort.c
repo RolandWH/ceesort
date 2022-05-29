@@ -63,7 +63,7 @@ int main(int argc, char** argv)
     printf(
         "1. Binary search\n"
         "2. Bubble sort\n"
-	"3. Liniar search\n"
+        "3. Liniar search\n"
         "Please pick a mode of operation: "
     );
     fgets(choice_str, 16, stdin);
@@ -112,13 +112,22 @@ int main(int argc, char** argv)
     }
     else if (choice == 3)
     {
-   	char target_str[16];
+        char target_str[16];
         printf("Enter number to search for: ");
-        fgets(target_str, 16, stdin);                     target_str[strcspn(target_str, "\n")] = 0;
+        fgets(target_str, 16, stdin);
+        target_str[strcspn(target_str, "\n")] = 0;
         while (!isint(target_str))
-        {                                                     printf("Sorry but you must enter a whole number, try again: ");                                     fgets(target_str, 16, stdin);
+        {
+            printf("Sorry but you must enter a whole number, try again: ");
+            fgets(target_str, 16, stdin);
         }
-        int target = atoi(target_str);                                                                      int result = lsrch(arr, n, target);               if (result == -1)                                     puts("Value not found");                      else                                                  printf("Value found at index: %d\n", result);
+        int target = atoi(target_str);
+
+        int result = lsrch(arr, n, target);
+        if (result == -1)
+            puts("Value not found");
+        else
+            printf("Value found at index: %d\n", result);
     }
 
     free(arr);
