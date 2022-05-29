@@ -11,10 +11,10 @@
 #include <stddef.h>
 
 
-int bsrch(int target, int* arr, size_t n)
+int bsrch(int target, int* arr, int n)
 {
     // TODO: Find a way to error if list is out of order
-    int start = 0, end = (int)n - 1;
+    int start = 0, end = n - 1;
     if (arr[start] > target || arr[end] < target) return -1;
     int mid = (start + end) / 2;
 

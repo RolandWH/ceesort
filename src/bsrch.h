@@ -9,4 +9,4 @@
 #include <stddef.h>
 
 
-int bsrch(int target, int* arr, size_t n);
+int bsrch(int target, int* arr, int n);

@@ -10,7 +10,7 @@
 #include <stdbool.h>
 
 
-void bubblesort(int* arr, size_t n)
+void bubblesort(int* arr, int n)
 {
     bool swapped = true;
 
